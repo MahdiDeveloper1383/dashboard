@@ -2,7 +2,7 @@ import { User } from "../interfaces/IUser";
 
 export const Users: User[] = [
   { id: 1, username: 'Json51', password: 'G7v!pL2#', role: 'admin' },
-  { id: 2, username: 'Mahdi12', password: 'mN$4kR!q', role: 'admin' },
+  { id: 2, username: 'Mahdi', password: 'mN$4kR!q', role: 'admin' },
   { id: 3, username: 'Mary32', password: 'B8x@tZ6w', role: 'owner' },
   { id: 4, username: 'Jack32', password: 'pQ#3sV!y', role: 'owner' },
   { id: 5, username: 'Tina12', password: 'L!9bXr$2', role: 'owner' },
