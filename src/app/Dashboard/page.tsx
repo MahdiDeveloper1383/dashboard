@@ -49,7 +49,6 @@ export default function Dashboard() {
       <title>Dashboard</title>
       <div className="flex justify-center ">
        <div className="w-full max-w-[1400px] h-auto flex flex-col md:flex-row bg-gray-100 rounded-2xl shadow-2xl mt-3 mb-3">
-
             {currentuser && (
       <UserProfile
         user={currentuser}
@@ -59,7 +58,6 @@ export default function Dashboard() {
     )}
 
           <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4 overflow-y-auto">
-
             {loading && <p>loading...</p>}
             {error &&
               <div>
