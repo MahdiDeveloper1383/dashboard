@@ -1,5 +1,4 @@
 'use client'
-import axios from "axios";
 import { User } from "../interfaces/IUser";
 import { useState } from "react";
 import { useUpdateUser } from "../_Hooks/updateuser";
@@ -27,7 +26,7 @@ const Edit_User = ({ user, onSave }: { user: User, onSave: (updatedUser: User) =
         };
         mutate(
             {id:user.id,data:upadater},{
-                onSuccess(data, variables, onMutateResult, context) {
+                onSuccess(data) {
                     onSave(data)
                 },
             }

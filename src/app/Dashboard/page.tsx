@@ -73,8 +73,8 @@ export default function Dashboard() {
                 <Edit_User
                   onSave={(updateuser) => {
                     setcurrentuser(updateuser)
-                    // invalidate React Query cache
-                    refetch() // آپدیت می‌کنه
+                
+                    refetch()
                   }}
                   user={currentuser}
                 />
