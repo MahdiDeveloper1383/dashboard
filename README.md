@@ -38,7 +38,16 @@ The project uses **Next.js API routes** to handle backend functionality:
 > The backend is mocked using Next.js API routes; no external database is required for running the project.
 
 ## Getting Started
-
+users for test:[
+    {
+        username:Mahdi,
+        password:mN$4kR!q
+    },
+    {
+        username:Mary32
+        password:B8x@tZ6w
+    }
+]
 Follow these steps to run the project locally:
 
 1. **Clone the repository**
