@@ -14,9 +14,11 @@ export default function Login() {
     seterror('')
     setloading(false)
     try {
-      await axios.post('http://localhost:3000/api/auth', { username, password }, { withCredentials: true })
+      const response = await axios.post('http://localhost:3000/api/auth', { username, password }, { withCredentials: true })
       router.push('/Dashboard')
-
+      const {userId} = response.data
+      localStorage.setItem('userId',userId)
+      console.log(response.data)
     } catch (err: unknown) {
       if (axios.isAxiosError(err) && err.response) {
         if (err.response.status === 401) {

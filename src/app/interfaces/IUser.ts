@@ -6,5 +6,6 @@ export interface User{
     age:number
     email:string
     password:string
+    job:string
     role:'owner'|'admin'
 }

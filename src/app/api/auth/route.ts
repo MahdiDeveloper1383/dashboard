@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
     }
 
     const token = `JWT-TOKEN-${user.id}`;
-    const response = NextResponse.json({ token, role: user.role }, { status: 200 })
+    const response = NextResponse.json({ token,userId:user.id, role: user.role }, { status: 200 })
     response.cookies.set('token',token,{httpOnly:true,secure:process.env.NODE_ENV === 'production',path:'/',maxAge:60*60*24});
     return response
   } catch (err) {
