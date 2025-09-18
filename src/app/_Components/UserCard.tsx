@@ -23,7 +23,7 @@ const UserCard = ({ user }: { user: User }) => {
         </span>
       </div>
 
-      <div className="flex flex-col justify-center text-center sm:text-left mt-2 sm:mt-0">
+      <div className="flex flex-col justify-center items-center text-center sm:text-left mt-2 sm:mt-0">
         <p className="text-gray-500 text-sm sm:text-base">{user.job}</p>
         <p className="text-gray-400 text-xs sm:text-sm">📍 {user.location}</p>
       </div>

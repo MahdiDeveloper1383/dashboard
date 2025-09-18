@@ -2,10 +2,11 @@
 import axios from "axios";
 import { User } from "../interfaces/IUser";
 import { useState } from "react";
+import { useUpdateUser } from "../_Hooks/updateuser";
 
 const Edit_User = ({ user, onSave }: { user: User, onSave: (updatedUser: User) => void; }) => {
     const [formData, setFormData] = useState<User>(user);
-
+    const {mutate,isPending} = useUpdateUser()
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
@@ -19,14 +20,20 @@ const Edit_User = ({ user, onSave }: { user: User, onSave: (updatedUser: User) =
             email: formdata.get('email') as string,
             age: Number(formdata.get('age')),
             location: formdata.get('location') as string,
+            job: formdata.get('Job') as string,
             avatar: user.avatar,
             password: user.password,
-            job: user.job,
             role: user.role
         };
-        onSave(upadater);
-        axios.put(`http://localhost:3000/api/users/${user.id}`, { ...upadater, role: user.role })
-    }
+        mutate(
+            {id:user.id,data:upadater},{
+                onSuccess(data, variables, onMutateResult, context) {
+                    onSave(data)
+                },
+            }
+        )
+        
+        }
     return (
         <form onSubmit={Edituser}>
             <div className="flex justify-between items-center flex-row gap-16">
@@ -47,6 +54,10 @@ const Edit_User = ({ user, onSave }: { user: User, onSave: (updatedUser: User) =
                 <div className="flex flex-col mt-4">
                     <label htmlFor="location" className="mb-3 text-xl text-cyan-300 font-bold">Location:</label>
                     <input type="text" onChange={handleChange} value={formData.location} className="border-2 p-2 pr-9 bg-gray-100" name="location" id="" />
+                </div>
+                <div className="flex flex-col mt-4">
+                    <label htmlFor="Job" className="mb-3 text-xl text-cyan-300 font-bold">Job:</label>
+                    <input type="text" onChange={handleChange} value={formData.job} className="border-2 p-2 pr-9 bg-gray-100" name="Job" id="" />
                 </div>
             </div>
             <div className="flex justify-between w-full px-3 mt-3">

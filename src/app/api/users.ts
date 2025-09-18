@@ -2,7 +2,7 @@ import { User } from "../interfaces/IUser";
 
 export const Users: User[] = [
   { id: 1,  username: 'Json51',avatar:'/assets/Users/Img/User1.jpg',job:'Programer',location:'New York',age:20,email:'username@gmail.com', password: 'G7v!pL2#', role: 'admin' },
-  { id: 2,  username: 'Mahdi', avatar:'/assets/Users/Img/User2.jpg',job:'Progrmaer',location:'San Diego',age:25,email:'Mahdi@gmail.com',password: 'mN$4kR!q', role: 'admin' },
+  { id: 2,  username: 'Mahdi', avatar:'/assets/Users/Img/User2.jpg',job:'Programer',location:'San Diego',age:25,email:'Mahdi@gmail.com',password: 'mN$4kR!q', role: 'admin' },
   { id: 3,  username: 'Mary32',avatar:'/assets/Users/Img/User3.jpg',job:'Designer',location:'Paris',age:21,email:'Mary32@gmail.com', password: 'B8x@tZ6w', role: 'owner' },
   { id: 4,  username: 'Jack32',avatar:'/assets/Users/Img/User4.jpg',job:'Teacher',location:'London',age:23,email:'Jack32@gmail.com', password: 'pQ#3sV!y', role: 'owner' },
   { id: 5,  username: 'Tina12',avatar:'/assets/Users/Img/User5.jpg',job:'Worker',location:'Tabriz',age:29,email:'Tina12@gmail.com', password: 'L!9bXr$2', role: 'owner' },

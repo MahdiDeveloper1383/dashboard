@@ -2,6 +2,7 @@
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import { useLogin } from "./_Hooks/uselogin";
 
 export default function Login() {
   const router = useRouter()
@@ -9,31 +10,33 @@ export default function Login() {
   const [password, setpassword] = useState<string>('')
   const [loading, setloading] = useState<boolean>(false)
   const [error, seterror] = useState<string>('')
+  const {mutate,isError,}  = useLogin()
   const handlelogin = async (e: React.FormEvent) => {
     e.preventDefault()
     seterror('')
     setloading(false)
-    try {
-      const response = await axios.post('http://localhost:3000/api/auth', { username, password }, { withCredentials: true })
+    mutate(
+      {username,password},{
+        onSuccess:(data)=>{
+          localStorage.setItem('userId',data.userId.toString())
       router.push('/Dashboard')
-      const {userId} = response.data
-      localStorage.setItem('userId',userId)
-      console.log(response.data)
-    } catch (err: unknown) {
-      if (axios.isAxiosError(err) && err.response) {
-        if (err.response.status === 401) {
+
+        },onError:(err:unknown)=>{
+          if (axios.isAxiosError(err) && err.response) {
+            if (err.response.status === 401) {
           seterror('username or password is wrong');
         } else if (err.response.status === 500) {
           seterror('connection failed');
         } else {
           seterror('Unknown Problem');
         }
-      } else {
-        seterror('Network error');
+          }else{
+               seterror('Network error');
+          }
+        }
       }
-    } finally {
-      setloading(false)
-    }
+    )
+
   }
   return (
     <React.Fragment>
@@ -65,7 +68,7 @@ export default function Login() {
               />
             </div>
 
-            {error && <p className="text-red-600 text-center mb-4">{error}</p>}
+            {isError && <p className="text-red-600 text-center mb-4">{error}</p>}
 
             <input
               type="submit"
