@@ -1,4 +1,4 @@
-
+Demo:https://dashboard-lzza.vercel.app/
 # User Dashboard Project
 
 This project is a **user dashboard application** built with **Next.js 13**, **TypeScript**, **React Query**, and **Tailwind CSS**. The project showcases a fully functional dashboard for users where they can view and edit their profiles. Admin users have additional permissions to view and edit other users' data.
