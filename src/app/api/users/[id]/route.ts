@@ -1,7 +1,11 @@
-// src/app/api/users/[id]/route.ts
 import { NextRequest, NextResponse } from "next/server";
-import { Users } from "../../users"; 
-export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
+import { Users } from "../../users";
+
+export async function GET(
+  req: NextRequest,
+  context: { params: Promise<{ id: string }> } 
+) {
+  const params = await context.params;         
   const userId = Number(params.id);
   const user = Users.find((u) => u.id === userId);
 
@@ -12,10 +16,13 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
   return NextResponse.json(user, { status: 200 });
 }
 
-export async function PUT(req: NextRequest, context: { params: Promise<{ id: string }> }) {
+export async function PUT(
+  req: NextRequest,
+  context: { params: Promise<{ id: string }> }
+) {
   try {
-     const params = await context.params;
-  const userId = Number(params.id);
+    const params = await context.params;        
+    const userId = Number(params.id);
     const body = await req.json();
 
     const index = Users.findIndex((u) => u.id === userId);
@@ -23,7 +30,6 @@ export async function PUT(req: NextRequest, context: { params: Promise<{ id: str
       return NextResponse.json({ message: "User not found" }, { status: 404 });
     }
 
-    
     Users[index] = {
       ...Users[index],
       ...body,
