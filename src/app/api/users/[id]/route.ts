@@ -1,11 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Users } from "../../users";
+import { Users } from "../../../_lib/users";
+
+
+export const runtime = "nodejs";
+
 
 export async function GET(
   req: NextRequest,
-  context: { params: Promise<{ id: string }> } 
+  { params }: { params: { id: string } }
 ) {
-  const params = await context.params;         
   const userId = Number(params.id);
   const user = Users.find((u) => u.id === userId);
 
@@ -18,10 +21,9 @@ export async function GET(
 
 export async function PUT(
   req: NextRequest,
-  context: { params: Promise<{ id: string }> }
+  { params }: { params: { id: string } }
 ) {
   try {
-    const params = await context.params;        
     const userId = Number(params.id);
     const body = await req.json();
 
