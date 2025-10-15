@@ -5,7 +5,7 @@ import { useUpdateUser } from "../_Hooks/updateuser";
 
 const Edit_User = ({ user, onSave }: { user: User, onSave: (updatedUser: User) => void; }) => {
     const [formData, setFormData] = useState<User>(user);
-    const {mutate,isPending} = useUpdateUser()
+    const {mutate} = useUpdateUser()
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });

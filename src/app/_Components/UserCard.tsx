@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { User } from "../interfaces/IUser";
 
 const UserCard = ({ user }: { user: User }) => {
@@ -6,11 +7,7 @@ const UserCard = ({ user }: { user: User }) => {
       className="bg-white rounded-xl shadow-2xl p-4 flex flex-col sm:flex-row items-center sm:justify-between w-full h-auto sm:h-32 gap-4"
     >
       <div className="flex flex-col items-center sm:items-start">
-        <img
-          src={user.avatar}
-          alt={user.username}
-          className="w-10 h-10 sm:w-15 sm:h-15 rounded-full mb-2"
-        />
+        <Image src={user.avatar} alt={user.username} width={40} height={40} className=" sm:w-15 sm:h-15 rounded-full mb-2"/>
         <h2 className="text-base sm:text-lg font-bold">{user.username}</h2>
         <span
           className={`text-xs px-2 py-1 rounded-full 
